@@ -16,5 +16,5 @@
 package rotp.util;
 
 public interface ImageTransformer {
-    public int transformPixel(int i);
+    int transformPixel(int i);
 }

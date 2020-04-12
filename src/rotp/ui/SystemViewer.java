@@ -18,7 +18,7 @@ package rotp.ui;
 import rotp.model.galaxy.StarSystem;
 
 public interface SystemViewer {
-    public StarSystem systemViewToDisplay();
-    public void repaint();
+    StarSystem systemViewToDisplay();
+    void repaint();
     default String subPanelTextureName()            { return null; }
 }

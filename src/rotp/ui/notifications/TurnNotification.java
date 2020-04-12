@@ -16,29 +16,29 @@
 package rotp.ui.notifications;
 
 public interface TurnNotification extends Comparable<TurnNotification> {
-    static final String SYSTEMS_SCOUTED  = "0001";  // before plunder tech notifications
-    static final String RANDOM_EVENT     = "0002";  // before tech notifications
-    static final String DISCOVER_TECH    = "0020";
-    static final String PLUNDER_TECH     = "0021";
-    static final String STEAL_TECH       = "0022";
-    static final String STEAL_TECH_MESSAGE = "0023"; // when player steals tech, must occur immediately after steal tech
-    static final String SABOTAGE         = "0030";
-    static final String SYSTEM_SCANNED   = "3000";  // after all tech discovery notifications
-    static final String PROMPT_BOMBARD   = "4000";  // must occur before colonize prompt
-    static final String PROMPT_COLONIZE  = "4001";  // after system scans & ship combat
-    static final String COUNCIL_NOTIFY   = "5000";
-    static final String SELECT_NEW_TECH  = "7000";  // after all tech discovery notifications
-    static final String GNN_NOTIFY         = "8000";
-    static final String DIPLOMATIC_MESSAGE = "8500";
-    static final String ALLOCATE_SYSTEMS = "9000";
-    static final String CONSTRUCT_SHIP   = "9100";
-    static final String SPIES_CAPTURED   = "9150";
-    static final String ADVICE           = "9950";
+    String SYSTEMS_SCOUTED  = "0001";  // before plunder tech notifications
+    String RANDOM_EVENT     = "0002";  // before tech notifications
+    String DISCOVER_TECH    = "0020";
+    String PLUNDER_TECH     = "0021";
+    String STEAL_TECH       = "0022";
+    String STEAL_TECH_MESSAGE = "0023"; // when player steals tech, must occur immediately after steal tech
+    String SABOTAGE         = "0030";
+    String SYSTEM_SCANNED   = "3000";  // after all tech discovery notifications
+    String PROMPT_BOMBARD   = "4000";  // must occur before colonize prompt
+    String PROMPT_COLONIZE  = "4001";  // after system scans & ship combat
+    String COUNCIL_NOTIFY   = "5000";
+    String SELECT_NEW_TECH  = "7000";  // after all tech discovery notifications
+    String GNN_NOTIFY         = "8000";
+    String DIPLOMATIC_MESSAGE = "8500";
+    String ALLOCATE_SYSTEMS = "9000";
+    String CONSTRUCT_SHIP   = "9100";
+    String SPIES_CAPTURED   = "9150";
+    String ADVICE           = "9950";
 
     @Override
-    public default int compareTo(TurnNotification notif) {
+    default int compareTo(TurnNotification notif) {
         return displayOrder().compareTo(notif.displayOrder());
     }
-    abstract String displayOrder();
-    abstract void notifyPlayer();
+    String displayOrder();
+    void notifyPlayer();
 }

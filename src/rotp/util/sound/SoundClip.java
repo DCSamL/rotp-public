@@ -16,7 +16,7 @@
 package rotp.util.sound;
 
 public interface SoundClip {
-    public void pausePlaying();
-    public void resumePlaying();
-    public void endPlaying();
+    void pausePlaying();
+    void resumePlaying();
+    void endPlaying();
 }

@@ -31,62 +31,65 @@ import rotp.model.galaxy.StarSystem;
 import rotp.ui.main.GalaxyMapPanel;
 
 public interface IMapHandler {
-    public void repaint();
-    public GalaxyMapPanel map();
+    void repaint();
+    GalaxyMapPanel map();
 
-    public Sprite hoveringSprite();
-    public Sprite clickedSprite();
-    public void clickedSprite(Sprite s);
+    Sprite hoveringSprite();
+    Sprite clickedSprite();
+    void clickedSprite(Sprite s);
 
-    public Border mapBorder();
-    public float startingScalePct();
-    public void checkMapInitialized();
+    Border mapBorder();
+    float startingScalePct();
+    void checkMapInitialized();
 
-    public Location mapFocus();
+    Location mapFocus();
 
-    public Color shadeC();
-    public Color backC();
-    public Color lightC();
-    default public void mapFocus(IMappedObject obj) { mapFocus().setXY(obj.x(), obj.y()); }
-    default public void drawYear(Graphics2D g) { }
-    default public void drawTitle(Graphics2D g) { }
+    Color shadeC();
+    Color backC();
+    Color lightC();
+    default void mapFocus(IMappedObject obj) { mapFocus().setXY(obj.x(), obj.y()); }
+    default void drawYear(Graphics2D g) { }
+    default void drawTitle(Graphics2D g) { }
     
-    default public boolean animating()    { return true; }
+    default boolean animating()    { return true; }
 
-    default public boolean forwardMouseEvents() { return false; }
-    default public void mouseWheelMoved(MouseWheelEvent e)  { }
-    default public boolean dragSelect(int x0, int y0, int x1, int y) { return false; }
+    default boolean forwardMouseEvents() { return false; }
+    default void mouseWheelMoved(MouseWheelEvent e)  { }
+    default boolean dragSelect(int x0, int y0, int x1, int y) { return false; }
 
-    default public void hoveringOverSprite(Sprite o)              { };
-    default public void clickingOnSprite(Sprite o, int cnt, boolean right, boolean click)       { };
-    default public void clickingNull(int cnt, boolean right) {  };
-    default public boolean masksMouseOver(int x, int y)       { return false; }
+    default void hoveringOverSprite(Sprite o)              { }
 
-    default public boolean isClicked(Sprite s)             { return clickedSprite() == s; }
-    default public boolean isHovering(Sprite s)            { return hoveringSprite() == s; }
-    default public boolean isHighlighting(Sprite s)        { return false; }
-    default public boolean isLowlighting(Sprite s)         { return false; }
-    default public boolean allowsDragSelect()              { return false; }
-    default public boolean hoverOverFleets()               { return true; }
-    default public boolean hoverOverSystems()              { return true; }
-    default public boolean hoverOverFlightPaths()          { return true; }
+    default void clickingOnSprite(Sprite o, int cnt, boolean right, boolean click)       { }
 
-    default public String systemLabel(StarSystem s)        { return Empire.thePlayer().sv.name(s.id); }
-    default public String systemLabel2(StarSystem s)       { return ""; }
-    default public Color systemLabelColor(StarSystem s)    { return Empire.thePlayer().sv.empireColor(s.id); }
-    default public List<Sprite> nextTurnSprites()          { return new ArrayList<>(); }
-    default public List<Sprite> controlSprites()           { return new ArrayList<>(); }
-    default public void reselectCurrentSystem() { };
+    default void clickingNull(int cnt, boolean right) {  }
 
-    default public int defaultFleetDisplay()             { return GalaxyMapPanel.SHOW_IMPORTANT_FLIGHTPATHS; }
-    default public int defaultShipRangesDisplay()        { return GalaxyMapPanel.SHOW_STARS_AND_RANGES; }
-    default public boolean defaultGridCircularDisplay()  { return false; }
-    default public IMappedObject gridOrigin()            { return null; }
-    default public void drawAlerts(Graphics2D g)         { }
+    default boolean masksMouseOver(int x, int y)       { return false; }
+
+    default boolean isClicked(Sprite s)             { return clickedSprite() == s; }
+    default boolean isHovering(Sprite s)            { return hoveringSprite() == s; }
+    default boolean isHighlighting(Sprite s)        { return false; }
+    default boolean isLowlighting(Sprite s)         { return false; }
+    default boolean allowsDragSelect()              { return false; }
+    default boolean hoverOverFleets()               { return true; }
+    default boolean hoverOverSystems()              { return true; }
+    default boolean hoverOverFlightPaths()          { return true; }
+
+    default String systemLabel(StarSystem s)        { return Empire.thePlayer().sv.name(s.id); }
+    default String systemLabel2(StarSystem s)       { return ""; }
+    default Color systemLabelColor(StarSystem s)    { return Empire.thePlayer().sv.empireColor(s.id); }
+    default List<Sprite> nextTurnSprites()          { return new ArrayList<>(); }
+    default List<Sprite> controlSprites()           { return new ArrayList<>(); }
+    default void reselectCurrentSystem() { }
+
+    default int defaultFleetDisplay()             { return GalaxyMapPanel.SHOW_IMPORTANT_FLIGHTPATHS; }
+    default int defaultShipRangesDisplay()        { return GalaxyMapPanel.SHOW_STARS_AND_RANGES; }
+    default boolean defaultGridCircularDisplay()  { return false; }
+    default IMappedObject gridOrigin()            { return null; }
+    default void drawAlerts(Graphics2D g)         { }
 
     default Empire empireBoundaries()                    { return Galaxy.current().player(); }
-    default public float systemClickRadius()             { return 0.5f; }
-    default public boolean showYear()                    { return true; }
+    default float systemClickRadius()             { return 0.5f; }
+    default boolean showYear()                    { return true; }
     default boolean drawBanner(StarSystem s)             { return false; }
     default boolean drawStar(StarSystem s)               { return true; }
     default boolean showOwnerReach(StarSystem s)         { return false; }

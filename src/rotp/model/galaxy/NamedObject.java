@@ -16,5 +16,5 @@
 package rotp.model.galaxy;
 
 public interface NamedObject {
-    public String name();
+    String name();
 }
